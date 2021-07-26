@@ -1,0 +1,120 @@
+<div class="form-container">
+    <img src="assets/img/userI.png" alt="" class="form-image">
+    <form class="form" [formGroup]="RegistroForm">
+        <div class="form-group">
+            <label class="form-label">Nombre</label>
+            <input
+                type="text"
+                class="form-input"
+                placeholder="Ej. David"
+                formControlName="txtNombre"
+            />
+        </div>
+        <div *ngIf="txtNombre.errors" class="danger-text">
+            <div *ngIf="txtNombre.errors.required && formValid !=0" class="danger-text">
+              *Campo Requerido.
+            </div>  
+            <div *ngIf="txtNombre.errors?.maxlength">
+                Maximo 30 caracteres.
+            </div>                 
+        </div>
+        <div class="form-group">
+            <label class="form-label">Apellido</label>
+            <input
+                type="text"
+                class="form-input"
+                placeholder="Ej. Quitora"
+                formControlName="txtApellido"
+            />
+        </div>
+        <div *ngIf="txtApellido.errors" class="danger-text">
+            <div *ngIf="txtApellido.errors.required && formValid !=0" class="danger-text">
+              *Campo Requerido.
+            </div>   
+            <div *ngIf="txtApellido.errors?.maxlength">
+                Maximo 30 caracteres.
+            </div>                        
+        </div>
+        <div class="form-group">
+            <label class="form-label">País</label>
+            <mat-select-country style="display: contents !important;" formControlName="selPais"> 
+            </mat-select-country>
+        </div>
+        <div *ngIf="selPais.errors" class="danger-text" >
+            <div *ngIf="selPais.errors.required && formValid !=0" class="danger-text">
+              *Campo Requerido.
+            </div>          
+        </div>
+        <div class="form-group">
+            <label class="form-label">Correo</label>
+            <input
+                type="email"
+                class="form-input"
+                placeholder="Ej. micorreo@correo.com"
+                formControlName="txtCorreo"
+            />
+        </div>
+        <div *ngIf="txtCorreo.errors" class="danger-text"> 
+            <div *ngIf="txtCorreo.errors.required && formValid !=0" class="danger-text">
+              *Campo Requerido.
+            </div> 
+            <div *ngIf="txtCorreo.errors?.pattern">
+                Formato de correo incorrecto.
+              </div> 
+              <div *ngIf="txtCorreo.errors?.maxlength">
+                Maximo 50 caracteres.
+              </div>          
+        </div>
+        <div class="form-group">
+            <label class="form-label">Télefono</label>
+            <input
+                type="tel"
+                class="form-input"
+                placeholder="Ej. 573182042515"
+                formControlName="txtTelefono"
+            />
+        </div>
+        <div *ngIf="txtTelefono.errors" class="danger-text">
+            <div *ngIf="txtTelefono.errors && formValid !=0" class="danger-text">
+              *Campo Requerido/Solo numeros.
+            </div>          
+        </div>
+        <div class="form-group">
+            <label class="form-label">Contraseña</label>
+            <input
+                type="password"
+                class="form-input"
+                formControlName="txtContrasena"
+            />
+        </div>
+        <div *ngIf="txtContrasena.errors" class="danger-text" >
+            <div *ngIf="txtContrasena.errors.required && formValid !=0" class="danger-text">
+              *Campo Requerido.
+            </div>          
+        </div>
+        <div class="form-group">
+            <label class="form-label">Confirmar contraseña</label>
+            <input
+                type="password"
+                class="form-input"
+                formControlName="txtContrasena2"
+            />
+        </div>
+        <div *ngIf="txtContrasena2.errors" class="danger-text" >
+            <div *ngIf="txtContrasena2.errors.required && formValid !=0" class="danger-text">
+              *Campo Requerido.
+            </div>        
+            <div *ngIf="txtContrasena2 !== txtContrasena" class="danger-text">
+                *Contraseña no coincide.
+              </div>       
+        </div>
+         
+        <div class="form-group">
+            <input
+                (click)="Registrar($event)"
+                class="form-submit"
+                value="Registrar"
+            >
+        </div>
+    </form>
+</div>
